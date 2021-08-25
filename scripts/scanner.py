@@ -6,22 +6,24 @@ from datetime import datetime
 import pyfiglet
 
 #Define the target
+# Scan through given ports FIRST/LAST or do full range scan
 
-
-
-if len(sys.argv) >= 3:
-        target = socket.gethostbyname(sys.argv[1]) #Translate Hostname to IP
-        first_port = sys.argv[2]
-        last_port = sys.argv[3]
 
 if len(sys.argv) == 2:
-            target = socket.gethostbyname(sys.argv[1]) #Translate Hostname to IP
-            first_port = 1
-            last_port = 65535
+    target = socket.gethostbyname(sys.argv[1]) #Translate Hostname to IP
+    first_port = 1
+    last_port = 65535
+
+elif len(sys.argv) == 4:
+    target = socket.gethostbyname(sys.argv[1]) #Translate Hostname to IP
+    first_port = sys.argv[2]
+    last_port = sys.argv[3]
+
 else:
-    print("invalid amount of arguments.")
-    print("usage for full range scan: python3 port_scanner.py <ip or hostname>")
-    print("usage for custom range scan: python3 port_scanner.py <ip> <first port> <last port>")
+    print("[-] Invalid amount of arguments.")
+    print("[-] Usage for full range scan: python3 port_scanner.py <ip or hostname>")
+    print("[-] Usage for custom range scan: python3 port_scanner.py <ip> <first port> <last port>")
+    sys.exit()
 
 
 
@@ -30,8 +32,8 @@ ascii_banner = pyfiglet.figlet_format("Port Scanner")
 
 print(ascii_banner)
 
-print (len(sys.argv))
 print("[+] Scanning the target " + target)
+print(f"[+] Scanning port range: {first_port} to {last_port}")
 print("[+] Scan started at " + str(datetime.now()))
 
 
