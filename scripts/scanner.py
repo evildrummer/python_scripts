@@ -1,4 +1,8 @@
 #!/usr/bin/python3
+#
+# Just a simple port scanner
+#
+#
 
 import sys
 import socket
@@ -17,7 +21,7 @@ first_port = sys.argv[2]
 last_port = sys.argv[3]
 
 #Add a pretty banner
-ascii_banner = pyfiglet.figlet_format("PNPT Scanner")
+ascii_banner = pyfiglet.figlet_format("Port Scanner")
 
 print(ascii_banner)
 
