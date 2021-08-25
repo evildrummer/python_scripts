@@ -1,8 +1,4 @@
 #!/usr/bin/python3
-#
-# Just a simple port scanner
-#
-#
 
 import sys
 import socket
@@ -11,21 +7,30 @@ import pyfiglet
 
 #Define the target
 
+
+
 if len(sys.argv) >= 3:
         target = socket.gethostbyname(sys.argv[1]) #Translate Hostname to IP
+        first_port = sys.argv[2]
+        last_port = sys.argv[3]
+
+if len(sys.argv) == 2:
+            target = socket.gethostbyname(sys.argv[1]) #Translate Hostname to IP
+            first_port = 1
+            last_port = 65535
 else:
     print("invalid amount of arguments.")
-    print("usage: python3 port_scanner.py <ip> <first port> <last port>")
+    print("usage for full range scan: python3 port_scanner.py <ip or hostname>")
+    print("usage for custom range scan: python3 port_scanner.py <ip> <first port> <last port>")
 
-first_port = sys.argv[2]
-last_port = sys.argv[3]
+
 
 #Add a pretty banner
 ascii_banner = pyfiglet.figlet_format("Port Scanner")
 
 print(ascii_banner)
 
-
+print (len(sys.argv))
 print("[+] Scanning the target " + target)
 print("[+] Scan started at " + str(datetime.now()))
 
@@ -42,7 +47,7 @@ def port_scanner(first_port, last_port):
                 print(f"Port {port} is open     ")
                 s.close()
             else:
-                print(f"[+] Scanning Port {port}", sep='\n', end='\r', flush=True) #overwrites the scanned port until open port is found
+                print(f"[+] Scanning Port {port}", sep='\n', end='\r', flush=True)
                 s.close()
                 
 
