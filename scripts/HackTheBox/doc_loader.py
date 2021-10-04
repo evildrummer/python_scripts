@@ -13,16 +13,11 @@ if len(sys.argv) != 2:
 target = "http://intelligence.htb/documents/"
 saveToPath = sys.argv[1]
 
-
-
 def docLoader():
-
     
     try:
-        for years in range(0,2): 
-        
+        for years in range(0,2):      
                 for month in range(1,13):
-                    
                     r = requests.get(target + "202" + str(years) + "-" + str(month).zfill(2) + "-01-upload.pdf" )
                     doc = "202" + str(years) + "-"  + str(month).zfill(2) + "-01-upload.pdf"
                     print(f"[+] Scanning {doc}" , sep='\n', end='\r', flush=True)
@@ -44,12 +39,10 @@ def docLoader():
                                     f.write(r.content)
                                     doc_total += 1
                                     print(f"[+] Document {doc} found")
-
                 else:
                     continue
                 return doc_total
-                
-            
+                            
     except KeyboardInterrupt:
             print("\n")
             print(f"[-] Exiting script")
@@ -59,10 +52,6 @@ def docLoader():
     except requests.ConnectionError:
             print(f"[+] Hostname could not be reached")
             sys.exit()
-
-
-
-
 
 docLoader()
 #Summary of all downloaded files
