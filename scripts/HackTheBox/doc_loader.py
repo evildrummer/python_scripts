@@ -23,7 +23,7 @@ def docLoader():
                     print(f"[+] Scanning {doc}" , sep='\n', end='\r', flush=True)
 
                     if r.status_code == 200:                        
-                        with open(doc, 'wb') as f:
+                        with open(saveToPath + doc, 'wb') as f:
                             f.write(r.content)
                             global doc_total
                             doc_total += 1
@@ -35,7 +35,7 @@ def docLoader():
                             print(f"[+] Scanning {doc}", sep='\n', end='\r', flush=True)
 
                             if r.status_code == 200:                        
-                                with open(doc, 'wb') as f:
+                                with open(saveToPath + doc, 'wb') as f:
                                     f.write(r.content)
                                     doc_total += 1
                                     print(f"[+] Document {doc} found")
