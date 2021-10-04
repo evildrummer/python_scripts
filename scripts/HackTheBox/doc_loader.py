@@ -54,5 +54,5 @@ def docLoader():
             sys.exit()
 
 docLoader()
-#Summary of all downloaded files
+# Summary of all downloaded files
 print(f"[+] {doc_total} documents were successfully downloaded to {sys.argv[1]} ")
